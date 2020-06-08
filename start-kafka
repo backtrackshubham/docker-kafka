@@ -1,0 +1,9 @@
+./bin/zookeeper-server-start.sh config/zookeeper.properties >> zookeeper.log &
+
+sed -i "s/HOST_NAME/$(hostname -i)/g" config/server.properties
+
+sleep 10s
+
+echo "You could use $(hostname -i) as bootstrap server or broker in your test"
+
+./bin/kafka-server-start.sh config/server.properties >> kafka.log
