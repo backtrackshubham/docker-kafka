@@ -9,9 +9,11 @@ RUN apk add --no-cache libc6-compat libgcc zlib-dev bash wget && \
 	tar xvf kafka_2.12-2.4.0.tgz --strip-components=1 && \
 	rm -rf kafka_2.12-2.4.0.tgz
 
-ADD https://gist.githubusercontent.com/shubhamknoldus/83c1dd9c241d27bbc61237d802c32114/raw/bdbcddddbfbbd91a64403ee71918a12b4c0b2df7/server.properties config/
+ADD https://raw.githubusercontent.com/shuvishu/docker-kafka/master/server.properties config/
 
-ADD https://gist.githubusercontent.com/shubhamknoldus/83c1dd9c241d27bbc61237d802c32114/raw/bdbcddddbfbbd91a64403ee71918a12b4c0b2df7/start-kafka .
+ADD https://raw.githubusercontent.com/shuvishu/docker-kafka/master/zookeeper.properties config/
+
+ADD https://raw.githubusercontent.com/shuvishu/docker-kafka/master/start-kafka .
 
 RUN chmod 755 start-kafka
 

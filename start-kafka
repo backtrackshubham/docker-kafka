@@ -1,9 +1,18 @@
-./bin/zookeeper-server-start.sh config/zookeeper.properties >> zookeeper.log &
-
 sed -i "s/HOST_NAME/$(hostname -i)/g" config/server.properties
+sed -i "s/HOST_NAME/$(hostname -i)/g" config/zookeeper.properties
+
+
+KAFKA_LOGS_DIR="$(pwd)"
+
+
+sed -i "s/KAFKA_LOGS_DIR/$KAFKA_LOGS_DIR/g" server.properties
+sed -i "s/KAFKA_LOGS_DIR/$KAFKA_LOGS_DIR/g" zookeeper.properties
+
+
+./bin/zookeeper-server-start.sh config/zookeeper.properties >> zookeeper.log &
 
 sleep 10s
 
-echo "You could use $(hostname -i) as bootstrap server or broker in your test"
+echo "You could use $(hostname -i) as bootstrap server or broker in your test zookeeper is at $(hostname -i):2181"
 
 ./bin/kafka-server-start.sh config/server.properties >> kafka.log
