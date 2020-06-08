@@ -6,10 +6,11 @@ sed -i "s/HOST_NAME/$(hostname -i)/g" config/zookeeper.properties
 
 
 KAFKA_LOGS_DIR="$(pwd)"
+VALUE_DIR="${KAFKA_LOGS_DIR//\//\\/}"
 
 
-sed -i "s/KAFKA_LOGS_DIR/$KAFKA_LOGS_DIR/g" config/server.properties
-sed -i "s/KAFKA_LOGS_DIR/$KAFKA_LOGS_DIR/g" config/zookeeper.properties
+sed -i "s/KAFKA_LOGS_DIR/$VALUE_DIR/g" config/server.properties
+sed -i "s/KAFKA_LOGS_DIR/$VALUE_DIR/g" config/zookeeper.properties
 
 
 ./bin/zookeeper-server-start.sh config/zookeeper.properties >> zookeeper.log &
