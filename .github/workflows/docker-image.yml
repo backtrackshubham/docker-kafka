@@ -15,4 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag shuhamknoldus/ghaction:$(date +%s)
+      env:
+        SUPER_SECRET: ${{ secrets.DOCKER_HUB_TOKEN }}
+      run: docker login --username shuhamknoldus --password $SUPER_SECRET; docker build . --file Dockerfile --tag shuhamknoldus/kafka-container:latest; docker push shuhamknoldus/kafka-container:latest;
+        
