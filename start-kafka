@@ -19,4 +19,7 @@ sleep 10s
 
 echo "You could use ${IP:-$(hostname -i)} as bootstrap server or broker in your test zookeeper is at ${IP:-$(hostname -i)}:2181"
 
-./bin/kafka-server-start.sh config/server.properties >> kafka.log
+./bin/kafka-server-start.sh config/server.properties >> kafka.log &
+
+tail -f *.log
+
