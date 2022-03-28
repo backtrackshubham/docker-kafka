@@ -1,5 +1,5 @@
-curl https://raw.githubusercontent.com/backtrackshubham/docker-kafka/master/server.properties > config/server.properties
-curl https://raw.githubusercontent.com/backtrackshubham/docker-kafka/master/zookeeper.properties > config/zookeeper.properties
+#curl https://raw.githubusercontent.com/backtrackshubham/docker-kafka/master/server.properties > config/server.properties
+#curl https://raw.githubusercontent.com/backtrackshubham/docker-kafka/master/zookeeper.properties > config/zookeeper.properties
 
 sed -i "s/HOST_NAME/${IP:-$(hostname -i)}/g" config/server.properties
 sed -i "s/HOST_NAME/${IP:-$(hostname -i)}/g" config/zookeeper.properties
