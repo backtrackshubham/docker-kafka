@@ -14,6 +14,7 @@ ADD https://raw.githubusercontent.com/backtrackshubham/docker-kafka/master/start
 #RUN curl https://raw.githubusercontent.com/backtrackshubham/docker-kafka/master/server.properties > config/server.properties
 #RUN curl https://raw.githubusercontent.com/backtrackshubham/docker-kafka/master/zookeeper.properties > config/zookeeper.properties
 
+
 RUN chmod 755 start-kafka
 
 ENTRYPOINT bash start-kafka
